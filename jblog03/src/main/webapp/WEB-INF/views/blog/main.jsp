@@ -22,6 +22,7 @@
 				  line-height: 1rem;
 				  /*border-radius: 0.5rem;*/
 				">
+					<h2 style="color:gray">카테고리 : ${category }</h2> <br>
 					<c:if test="${empty postvo.title }">
 						<h4>해당 카테고리에 글이 없습니다.</h4>
 					</c:if>
@@ -34,7 +35,7 @@
 				</div>
 				<ul class="blog-list">
 					<c:forEach items="${postlist }" var="post" varStatus="status">
-						<li><a href="${pageContext.request.contextPath}/${id}?postno=${post.no }">${post.title }</a> <span>${post.regDate }</span></li>
+						<li><a href="${pageContext.request.contextPath}/${id}?postno=${post.no }&category=${category }">${post.title }</a> <span>${post.regDate }</span></li>
 					</c:forEach>
 				</ul>
 			</div>

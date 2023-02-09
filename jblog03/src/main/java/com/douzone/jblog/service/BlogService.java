@@ -53,6 +53,7 @@ public class BlogService {
 		map.put("postvo", postvo);
 		map.put("categorylist", categoryList);
 		map.put("postlist", postList);
+		map.put("category", category);
 		
 		return map;
 	}

@@ -45,9 +45,9 @@ public class BlogController {
 		}
 		
 		Map<String, Object> map = blogService.getBlogIndexPage(id, category, postNo);
-
+		
 		model.addAllAttributes(map);
-
+		
 		return "blog/main";
 	}
 
