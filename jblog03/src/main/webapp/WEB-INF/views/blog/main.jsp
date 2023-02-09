@@ -15,7 +15,13 @@
 		<c:import url="/WEB-INF/views/includes/blogheader.jsp" />
 		<div id="wrapper">
 			<div id="content">
-				<div class="blog-content">
+				<div class="blog-content" style="
+				  background-color: white;
+				  border: 2px solid #1bf;
+				  padding: 0.5rem;
+				  line-height: 1rem;
+				  /*border-radius: 0.5rem;*/
+				">
 					<h4>${postvo.title }</h4>
 					<p>
 						${fn:replace(postvo.contents, newline, "<br>") }
