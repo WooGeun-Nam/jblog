@@ -17,7 +17,7 @@
 			<div id="content">
 				<div class="blog-content" style="
 				  background-color: white;
-				  border: 2px solid #1bf;
+				  border: 2px solid #3879D9;
 				  padding: 0.5rem;
 				  line-height: 1rem;
 				  /*border-radius: 0.5rem;*/

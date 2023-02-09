@@ -21,7 +21,7 @@ import com.douzone.jblog.vo.CategoryVo;
 import com.douzone.jblog.vo.PostVo;
 
 @Controller
-@RequestMapping("{id}")
+@RequestMapping("/{id:(?!assets).*}")
 public class BlogController {
 	@Autowired
 	private BlogService blogService;
@@ -36,6 +36,9 @@ public class BlogController {
 			@RequestParam(value="category", required=true, defaultValue="기본") String category,
 			@RequestParam(value="postno", required=true, defaultValue="0") Long postNo,
 			Model model) {
+		// some annotation
+		// RequestMapping({"", "/{pathNo1}", "/{pathNo1}/{pathNo2}"})
+		// @PathVariable("pathNo1") Optional<Long> pathNo1,
 		
 		if(userService.findUser(id)) {
 			return "redirect:/";

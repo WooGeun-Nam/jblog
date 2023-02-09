@@ -30,21 +30,22 @@
 		      		<c:set var="count" value="${categorylist.size() }" />
 		      		<c:forEach items="${categorylist }" var="category" varStatus="status">
 						<tr>
-							<td>${status.index }</td>
+							<td>${status.index + 1 }</td>
 							<td>${category.name }</td>
 							<td>${category.count }</td>
 							<td>
 							<c:if test="${category.defaultView == 'Y' }">
-								V
+								<img src="${pageContext.request.contextPath}/assets/images/check.png">
 							</c:if>
 							<c:if test="${category.defaultView == 'N' }">
-								<a href="${pageContext.request.contextPath }/${id }/admin/category/change/${category.no }">변경</a>
+								<a href="${pageContext.request.contextPath }/${id }/admin/category/change/${category.no }"
+									onclick="return confirm('변경 하시겠습니까?');"><input type="button" value="변경"></a>
 							</c:if>
 							</td>
 							<td>
 							<c:if test="${category.count < 1 }">
 								<a href="${pageContext.request.contextPath }/${id }/admin/category/delete/${category.no }/${category.count }/${category.defaultView }"
-							   		onclick="return confirm('삭제하시겠습니까?');">
+							   		onclick="return confirm('삭제 하시겠습니까?');">
 								<img src="${pageContext.request.contextPath}/assets/images/delete.jpg"></a>
 							</c:if>	
 							</td>

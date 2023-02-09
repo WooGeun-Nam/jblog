@@ -86,4 +86,8 @@ public class BlogService {
 		postRepository.insertPost(vo);
 		
 	}
+
+	public List<BlogVo> getBlogList() {
+		return blogRepository.findBlogList();
+	}
 }
