@@ -14,5 +14,6 @@
 				<c:if test="${authUser.id == id }">
 					<li><a href="${pageContext.request.contextPath}/${id }/admin">블로그 관리</a></li>
 				</c:if>
+				<li><a href="${pageContext.request.contextPath}">JBlog 메인</a></li>
 			</ul>
 		</div>

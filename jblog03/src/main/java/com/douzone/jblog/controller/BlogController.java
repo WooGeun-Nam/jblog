@@ -33,7 +33,7 @@ public class BlogController {
 	@RequestMapping("")
 	public String myBlog(
 			@PathVariable("id") String id, 
-			@RequestParam(value="category", required=true, defaultValue="기본") String category,
+			@RequestParam(value="category", required=true, defaultValue="") String category,
 			@RequestParam(value="postno", required=true, defaultValue="0") Long postNo,
 			Model model) {
 		// some annotation
@@ -94,7 +94,13 @@ public class BlogController {
 
 	@Auth
 	@RequestMapping("/admin/category/add")
-	public String addCategory(@PathVariable("id") String id, CategoryVo vo) {
+	public String addCategory(@PathVariable("id") String id, CategoryVo vo, Model model) {
+		if(vo.getName().equals("")) {
+        	model.addAttribute("msg","카테고리는 빈 값을 입력할 수 없습니다.");
+        	model.addAttribute("url","/" + id + "/admin/category");
+        	return "tools/redirect";
+		}
+		
 		blogService.addCategory(vo);
 
 		return "redirect:/" + id + "/admin/category";

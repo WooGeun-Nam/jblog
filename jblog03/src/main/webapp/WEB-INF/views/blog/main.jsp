@@ -22,7 +22,12 @@
 				  line-height: 1rem;
 				  /*border-radius: 0.5rem;*/
 				">
-					<h4>${postvo.title }</h4>
+					<c:if test="${empty postvo.title }">
+						<h4>해당 카테고리에 글이 없습니다.</h4>
+					</c:if>
+					<c:if test="${not empty postvo.title }">
+						<h4>${postvo.title }</h4>
+					</c:if>
 					<p>
 						${fn:replace(postvo.contents, newline, "<br>") }
 					<p>

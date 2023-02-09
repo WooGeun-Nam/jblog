@@ -29,7 +29,7 @@ public class BlogService {
 		List<CategoryVo> categoryList = categoryRepository.findAllCategory(id);
 		
 		CategoryVo categoryVo = new CategoryVo();
-		if(category.equals("기본")) {
+		if(category.equals("")) {
 			category = categoryRepository.findDefaultCategoryName(id);
 		}
 		categoryVo.setName(category);
