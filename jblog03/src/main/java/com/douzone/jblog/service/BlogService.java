@@ -23,23 +23,34 @@ public class BlogService {
 	@Autowired
 	private PostRepository postRepository;
 	
-	public Map<String, Object> getBlogIndexPage(String id) {
+	public Map<String, Object> getBlogIndexPage(String id, String category, Long postNo) {
 		BlogVo blogVo = blogRepository.findBlogInfo(id);
 		
 		List<CategoryVo> categoryList = categoryRepository.findAllCategory(id);
 		
 		CategoryVo categoryVo = new CategoryVo();
-		categoryVo.setName("기본");
+		if(category.equals("기본")) {
+			category = categoryRepository.findDefaultCategoryName(id);
+		}
+		categoryVo.setName(category);
 		categoryVo.setId(id);
 		
-		Long defaultCategoryNo = categoryRepository.findCategoryNoByNameAndId(categoryVo);
+		Long CategoryNo = categoryRepository.findCategoryNoByNameAndId(categoryVo);
 		
-		List<PostVo> postList = postRepository.findPostByCategoryNo(defaultCategoryNo);
+		List<PostVo> postList = postRepository.findPostByCategoryNo(CategoryNo);
+		
+		PostVo postvo;
+		if(postNo==0) {
+			postvo = postRepository.findLatestPostByCategoryNo(CategoryNo);
+		} else {
+			postvo = postRepository.findPostByPostNo(postNo);
+		}
 		
 		// 블로그 정보 담기
 		Map<String, Object> map = new HashMap<>();
 		map.put("id", id);
 		map.put("blogvo", blogVo);
+		map.put("postvo", postvo);
 		map.put("categorylist", categoryList);
 		map.put("postlist", postList);
 		
@@ -62,6 +73,10 @@ public class BlogService {
 		categoryRepository.insertCategory(vo);
 	}
 
+	public void changeDefaultCategory(Long no) {
+		categoryRepository.updateDefaultCategory(no);
+	}
+	
 	public void deleteCategory(Long no) {
 		categoryRepository.deleteCategory(no);
 		

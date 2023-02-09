@@ -7,16 +7,6 @@
 			insert into user values(#{id }, #{name }, #{password }, now())
 		]]>
 	</insert>
-	<insert id="insertBlog" parameterType="string">
-		<![CDATA[
-			insert into blog values(#{id }, '${id }님의 블로그', '/assets/upload-images/DefaultBlogProfile.png')
-		]]>
-	</insert>
-	<insert id="insertCategory" parameterType="string">
-		<![CDATA[
-			insert into category values(null, '기본', #{id })
-		]]>
-	</insert>
 	
 	<select id="findUserById" resultType="string" parameterType="string">
 		<![CDATA[

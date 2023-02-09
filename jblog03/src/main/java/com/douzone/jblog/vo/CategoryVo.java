@@ -4,6 +4,7 @@ public class CategoryVo {
 	private Long no;
 	private String name;
 	private String id;
+	private String defaultView;
 	private Long count;
 	public Long getNo() {
 		return no;
@@ -30,8 +31,16 @@ public class CategoryVo {
 	public void setCount(Long count) {
 		this.count = count;
 	}
+	
+	public String getDefaultView() {
+		return defaultView;
+	}
+	public void setDefaultView(String defaultView) {
+		this.defaultView = defaultView;
+	}
 	@Override
 	public String toString() {
-		return "CategoryVo [no=" + no + ", name=" + name + ", id=" + id + ", count=" + count + "]";
+		return "CategoryVo [no=" + no + ", name=" + name + ", id=" + id + ", defaultView=" + defaultView + ", count="
+				+ count + "]";
 	}
 }

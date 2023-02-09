@@ -24,18 +24,30 @@
 		      			<th>번호</th>
 		      			<th>카테고리명</th>
 		      			<th>포스트 수</th>
+		      			<th>기본</th>
 		      			<th>삭제</th>      			
 		      		</tr>
 		      		<c:set var="count" value="${categorylist.size() }" />
 		      		<c:forEach items="${categorylist }" var="category" varStatus="status">
 						<tr>
-							<td>${count - status.index }</td>
+							<td>${status.index }</td>
 							<td>${category.name }</td>
-							<td>카운트 나와야됨</td>
+							<td>${category.count }</td>
 							<td>
-							<a href="${pageContext.request.contextPath }/${id }/admin/category/delete/${category.no }"
-							   onclick="return confirm('삭제하시겠습니까?');">
-							<img src="${pageContext.request.contextPath}/assets/images/delete.jpg"></a></td>
+							<c:if test="${category.defaultView == 'Y' }">
+								V
+							</c:if>
+							<c:if test="${category.defaultView == 'N' }">
+								<a href="${pageContext.request.contextPath }/${id }/admin/category/change/${category.no }">변경</a>
+							</c:if>
+							</td>
+							<td>
+							<c:if test="${category.count < 1 }">
+								<a href="${pageContext.request.contextPath }/${id }/admin/category/delete/${category.no }/${category.count }/${category.defaultView }"
+							   		onclick="return confirm('삭제하시겠습니까?');">
+								<img src="${pageContext.request.contextPath}/assets/images/delete.jpg"></a>
+							</c:if>	
+							</td>
 						</tr> 
 					</c:forEach>				  
 				</table>

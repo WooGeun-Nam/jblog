@@ -20,4 +20,12 @@ public class PostRepository {
 	public void insertPost(PostVo vo) {
 		sqlSession.insert("post.insertPost", vo);
 	}
+
+	public PostVo findPostByPostNo(Long postNo) {
+		return sqlSession.selectOne("post.findPostByPostNo", postNo);
+	}
+
+	public PostVo findLatestPostByCategoryNo(Long categoryNo) {
+		return sqlSession.selectOne("post.findLatestPostByCategoryNo", categoryNo);
+	}
 }

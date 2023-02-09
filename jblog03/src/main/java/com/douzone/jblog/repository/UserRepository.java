@@ -13,8 +13,6 @@ public class UserRepository {
 	
 	public void joinUser(UserVo vo) {
 		sqlSession.insert("user.insertUser",vo);
-		sqlSession.insert("user.insertBlog",vo.getId());
-		sqlSession.insert("user.insertCategory",vo.getId());
 	}
 	
 	public String findUserById(String id) {

@@ -4,7 +4,28 @@
 <mapper namespace="post">
 	<select id="findPostByCategoryNo" resultType="postvo" parameterType="long">
 		<![CDATA[
-			select no, title, contents, date_format(reg_date, '%Y/%m/%d') as regDate from post where category_no = #{no }
+			select no, title, contents, date_format(reg_date, '%Y/%m/%d') as regDate 
+			from post 
+			where category_no = #{no }
+			order by no desc
+		]]>
+	</select>
+	
+	<select id="findPostByPostNo" resultType="postvo" parameterType="long">
+		<![CDATA[
+			select no, title, contents, date_format(reg_date, '%Y/%m/%d') as regDate 
+			from post 
+			where no = #{no }
+		]]>
+	</select>
+	
+	<select id="findLatestPostByCategoryNo" resultType="postvo" parameterType="long">
+		<![CDATA[
+			select no, title, contents, date_format(reg_date, '%Y/%m/%d') as regDate 
+			from post 
+			where category_no = #{no }
+			order by no desc
+            limit 0,1
 		]]>
 	</select>
 	

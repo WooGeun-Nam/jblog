@@ -21,10 +21,23 @@ public class CategoryRepository {
 		return sqlSession.selectOne("category.findCategoryNoByNameAndId", vo);
 	}
 	
+	public String findDefaultCategoryName(String id) {
+		return sqlSession.selectOne("category.findDefaultCategoryName", id);
+	}
+	
+	public void insertDefaultCategory(String id) {
+		sqlSession.insert("category.insertDefaultCategory", id);
+	}
+	
 	public void insertCategory(CategoryVo vo) {
 		sqlSession.insert("category.insertCategory", vo);
 	}
-
+	
+	public void updateDefaultCategory(Long no) {
+		sqlSession.update("category.updateResetDefaultCategory");
+		sqlSession.update("category.updateDefaultCategory", no);
+	}
+	
 	public void deleteCategory(Long no) {
 		sqlSession.delete("category.deleteCategory", no);
 	}

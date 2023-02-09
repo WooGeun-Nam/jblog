@@ -4,27 +4,60 @@
 <mapper namespace="category">
 	<select id="findAllCategory" resultType="categoryvo" parameterType="string">
 		<![CDATA[
-			select no, name from category where id = #{id };
+			select no, name, (select count(*) from post where category_no = c.no) as count, default_view 
+			from category c 
+			where id = #{id }
+			order by field(default_view,'Y','N'), no desc;
 		]]>
 	</select>
 	
 	<select id="findCategoryNoByNameAndId" resultType="long" parameterType="categoryvo">
 		<![CDATA[
-			select no from category where name = #{name } and id = #{id };
+			select no 
+			from category 
+			where name = #{name } and id = #{id }
 		]]>
 	</select>
 	
 	<select id="findCategoryById" resultType="long" parameterType="categoryvo">
 		<![CDATA[
-			select no from category where name = #{name } and id = #{id };
+			select no 
+			from category 
+			where id = #{id }
 		]]>
 	</select>
 	
-	<insert id="insertCategory" parameterType="categoryvo">
+	<select id="findDefaultCategoryName" resultType="string" parameterType="string">
 		<![CDATA[
-			insert into category values(null, #{name }, #{id });
+			select name 
+			from category 
+			where id = #{id } and default_view = 'Y'
+		]]>
+	</select>
+	
+	<insert id="insertDefaultCategory" parameterType="string">
+		<![CDATA[
+			insert into category values(null, '기본', #{id }, 'Y')
 		]]>
 	</insert>
+	
+	<insert id="insertCategory" parameterType="categoryvo">
+		<![CDATA[
+			insert into category values(null, #{name }, #{id }, 'N')
+		]]>
+	</insert>
+	
+	<update id="updateResetDefaultCategory">
+		<![CDATA[
+			update category set default_view = 'N' where default_view = 'Y';
+		]]>
+	</update>
+	
+	<update id="updateDefaultCategory" parameterType="long">
+		<![CDATA[
+			update category set default_view = 'Y' where no = #{no };
+		]]>
+	</update>
 	
 	<delete id="deleteCategory" parameterType="long">
 		<![CDATA[
