@@ -66,6 +66,8 @@ select count(*) from post where category_no = 1;
 
 select * from category;
 
+desc category;
+
 select no from category where id='dooly' and name='기본';
 
 select * from post where category_no = 1;
@@ -73,3 +75,17 @@ select * from post where category_no = 1;
 select * from post where category_no = (select no from category where id='dooly' and name='기본');
 
 select p.no, title, contents, reg_date from post p join category c on p.category_no = c.no where id='dooly' and name='기본';
+
+select no from category where name = '둘리의 추가 카테고리' and id='dooly' ;
+
+desc category;
+
+select * from post where category_no = (select no from category where name = '둘리의 추가 카테고리' and id='dooly') order by no desc limit 0,1;
+
+select p.no, title, contents, reg_date
+from post p 
+join category c 
+on p.category_no = c.no 
+where c.name = '둘리의 추가 카테고리' and c.id='dooly'
+order by no desc
+limit 0,1;
