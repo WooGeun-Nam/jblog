@@ -1,0 +1,4 @@
+spring:
+   web:
+      resources:
+         static-locations: classpath:/assets/, file:/Users/nam-woogeun/jblog-uploads/
