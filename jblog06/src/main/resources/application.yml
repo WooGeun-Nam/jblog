@@ -1,5 +1,7 @@
 # spring configuration
 spring:
+   profiles:
+      active: local
    application:
       name: jblog
    
@@ -15,10 +17,6 @@ spring:
       view:
          prefix: /WEB-INF/views/
          suffix: .jsp
-         
-   web:
-      resources:
-         static-locations: classpath:/assets/, file:/Users/nam-woogeun/jblog-uploads/
 
    # multipart
    servlet:
@@ -78,3 +76,16 @@ logging:
          douzone:
             jblog:
                exception: ERROR
+
+---
+spring:
+   profiles: local
+   web:
+      resources:
+         static-locations: classpath:/assets/, file:/Users/nam-woogeun/jblog-uploads/
+---
+spring:
+   profiles: prod
+   web:
+      resources:
+         static-locations: classpath:/assets/, file:/jblog-uploads/
