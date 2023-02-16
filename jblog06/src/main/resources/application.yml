@@ -1,5 +1,7 @@
 # spring configuration
 spring:
+   profiles:
+      active: spring.profiles.active
    application:
       name: jblog
    
@@ -44,6 +46,10 @@ spring:
          minimum-idle: 10
          maximum-pool-size: 20
 
+   web:
+      resources:
+         static-locations: classpath:/assets/, file:/Users/nam-woogeun/jblog-uploads/
+
 # mybatis
 mybatis:
    config-location: classpath:mybatis/configuration.xml
@@ -74,3 +80,12 @@ logging:
          douzone:
             jblog:
                exception: ERROR
+               
+---
+spring:
+   config:
+      activate:
+         on-profile: prod
+   web:
+      resources:
+         static-locations: classpath:/assets/, file:/jblog-uploads/

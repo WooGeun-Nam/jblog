@@ -1,6 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-
 	<!-- 부모 스타터 -->
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -8,70 +7,59 @@
 		<version>2.7.8</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	
 	<groupId>com.douzone</groupId>
 	<artifactId>jblog06</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	
 	<packaging>war</packaging>
-
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.build.outputEncoding>UTF-8</project.build.outputEncoding>
 		<java.version>17</java.version>
 	</properties>
-
-    <profiles>
-        <profile>
-            <id>local</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <properties>
-                <environment>local</environment>
-            </properties>
-        </profile>
- 
-        <profile>
-            <id>dev</id>
-            <properties>
-                <environment>dev</environment>
-            </properties>
-        </profile>
- 
-        <profile>
-            <id>prod</id>
-            <properties>
-                <environment>prod</environment>
-            </properties>
-        </profile>
-    </profiles>
-
+	<profiles>
+		<profile>
+			<id>local</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<spring.profiles.active>local</spring.profiles.active>
+			</properties>
+		</profile>
+		<profile>
+			<id>dev</id>
+			<properties>
+				<spring.profiles.active>dev</spring.profiles.active>
+			</properties>
+		</profile>
+		<profile>
+			<id>prod</id>
+			<properties>
+				<spring.profiles.active>prod</spring.profiles.active>
+			</properties>
+		</profile>
+	</profiles>
 	<dependencies>
 		<!-- Spring Boot Dev Tools: Live Reload -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
 		</dependency>
-
 		<!-- Spring Boot Web Stater -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
 		<!-- Spring Boot AOP Stater -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-aop</artifactId>
 		</dependency>
-
 		<!-- Spring Boot Validation Stater -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-validation</artifactId>
 		</dependency>
-
 		<!-- File Upload -->
 		<dependency>
 			<groupId>commons-fileupload</groupId>
@@ -83,32 +71,27 @@
 			<artifactId>commons-io</artifactId>
 			<version>2.11.0</version>
 		</dependency>
-		
 		<!-- MyBatis Starter -->
 		<dependency>
 			<groupId>org.mybatis.spring.boot</groupId>
 			<artifactId>mybatis-spring-boot-starter</artifactId>
 			<version>2.2.0</version>
 		</dependency>
-	
 		<!-- MariaDB JDBC Driver -->
 		<dependency>
-		    <groupId>org.mariadb.jdbc</groupId>
-		    <artifactId>mariadb-java-client</artifactId>
+			<groupId>org.mariadb.jdbc</groupId>
+			<artifactId>mariadb-java-client</artifactId>
 		</dependency>
-
 		<!-- JSTL -->
 		<dependency>
-		    <groupId>javax.servlet</groupId>
-		    <artifactId>jstl</artifactId>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
 		</dependency>
-		
 		<!-- Tomcat Jasper -->
 		<dependency>
-		    <groupId>org.apache.tomcat.embed</groupId>
-		    <artifactId>tomcat-embed-jasper</artifactId>
-		</dependency>						
-				
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-jasper</artifactId>
+		</dependency>
 		<!-- Spring Boot Test Integration -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -116,9 +99,8 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-	
 	<build>
-		<finalName>jblog06</finalName>	
+		<finalName>jblog06</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -134,6 +116,5 @@
 				</configuration>
 			</plugin>
 		</plugins>
-	</build>	
-
+	</build>
 </project>
