@@ -21,7 +21,9 @@ public class FileuploadService {
 	public String restore(MultipartFile file) {
 		String url = null;
 		
-		if(profile.equals("prod")) {
+		if(profile == null) {
+			SAVE_PATH = "/Users/nam-woogeun/jblog-uploads/upload-images";
+		} else if(profile.equals("prod")) {
 			SAVE_PATH = "/jblog-uploads/upload-images";
 		} else {
 			SAVE_PATH = "/Users/nam-woogeun/jblog-uploads/upload-images";
