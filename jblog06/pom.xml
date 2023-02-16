@@ -20,7 +20,33 @@
 		<project.build.outputEncoding>UTF-8</project.build.outputEncoding>
 		<java.version>17</java.version>
 	</properties>
-	
+
+    <profiles>
+        <profile>
+            <id>local</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <environment>local</environment>
+            </properties>
+        </profile>
+ 
+        <profile>
+            <id>dev</id>
+            <properties>
+                <environment>dev</environment>
+            </properties>
+        </profile>
+ 
+        <profile>
+            <id>prod</id>
+            <properties>
+                <environment>prod</environment>
+            </properties>
+        </profile>
+    </profiles>
+
 	<dependencies>
 		<!-- Spring Boot Dev Tools: Live Reload -->
 		<dependency>

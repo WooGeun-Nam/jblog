@@ -15,9 +15,19 @@ spring:
       view:
          prefix: /WEB-INF/views/
          suffix: .jsp
+         
+---
+spring:
+   profiles: local
    web:
       resources:
          static-locations: classpath:/assets/, file:/Users/nam-woogeun/jblog-uploads/
+---
+spring:
+   profiles: prod
+   web:
+      resources:
+         static-locations: classpath:/assets/, file:/jblog-uploads/
 
    # multipart
    servlet:
