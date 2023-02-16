@@ -1,7 +1,5 @@
 # spring configuration
 spring:
-   profiles:
-      active: spring.profiles.active
    application:
       name: jblog
    
@@ -88,4 +86,4 @@ spring:
          on-profile: prod
    web:
       resources:
-         static-locations: classpath:/assets/, file:/jblog-uploads/
+         static-locations: classpath:/assets/, file:/Users/nam-woogeun/jblog-uploads/prod/
