@@ -13,6 +13,31 @@
 		<jcloverslf4j.version>1.7.36</jcloverslf4j.version>
 		<logback.version>1.2.11</logback.version>
 	</properties>
+	
+    <profiles>
+        <profile>
+            <id>local</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <spring.profiles.active>local</spring.profiles.active>
+            </properties>
+        </profile>
+        <profile>
+            <id>dev</id>
+            <properties>
+                <spring.profiles.active>dev</spring.profiles.active>
+            </properties>
+        </profile>
+        <profile>
+            <id>prod</id>
+            <properties>
+                <spring.profiles.active>prod</spring.profiles.active>
+            </properties>
+        </profile>
+    </profiles>
+	
 	<dependencies>
 		<!-- spring mvc -->
 		<dependency>
