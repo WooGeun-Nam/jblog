@@ -6,8 +6,6 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Calendar;
 
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -15,12 +13,19 @@ import com.douzone.jblog.exception.FileuploadServiceException;
 
 @Service
 public class FileuploadService {
+	String profile = System.getProperty("spring.profiles.active");
 	// private static String SAVE_PATH = "/Users/nam-woogeun/jblog-uploads/upload-images";
-	private static String SAVE_PATH = "/jblog-uploads/upload-images";
+	private String SAVE_PATH;
 	private static String URL_PATH = "/assets/upload-images";
 	
 	public String restore(MultipartFile file) {
 		String url = null;
+		
+		if(profile.equals("prod")) {
+			SAVE_PATH = "/jblog-uploads/upload-images";
+		} else {
+			SAVE_PATH = "/Users/nam-woogeun/jblog-uploads/upload-images";
+		}
 
 		try {
 			File uploadDirectory = new File(SAVE_PATH);
